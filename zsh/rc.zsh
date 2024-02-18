@@ -39,8 +39,8 @@ plugins=(
 source_if_exists $ZSH/oh-my-zsh.sh
 
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source_if_exists ~/.p10k.zsh
+# p10k
+source_if_exists $DOTFILES/zsh/p10k.zsh
 
 #Aliases
 precmd() {
