@@ -1,0 +1,2 @@
+#ALIASES
+alias c='clear'
