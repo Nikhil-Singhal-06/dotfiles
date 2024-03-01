@@ -1,0 +1,55 @@
+live_config_reload = true
+
+[window]
+dimensions = {columns = 140, lines = 38}
+padding = {x =12, y=12}
+opacity= 0.7
+decorations = "None"
+blur = false
+decorations_theme_variant = "Dark"
+#option_as_alt = "Both"
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[font]
+normal = {family = "menlo" , style = "Regular" }
+size = 13.5
+offset = { x = 2, y = 2 }
+
+
+[selection]
+save_to_clipboard = true
+
+
+
+# Default colors
+[colors.primary]
+background = '#0A0E14'
+foreground = '#B3B1AD'
+# Normal colors
+[colors.normal]
+black   = '#2c2525'
+red     = '#fd6883'
+green   = '#adda78'
+yellow  = '#f9cc6c'
+blue    = '#f38d70'
+magenta = '#a8a9eb'
+cyan    = '#85dacc'
+white   = '#fff1f3'
+
+# Bright colors
+[colors.bright]
+black   = '#72696a'
+red     = '#fd6883'
+green   = '#adda78'
+yellow  = '#f9cc6c'
+blue    = '#f38d70'
+magenta = '#a8a9eb'
+cyan    = '#85dacc'
+white   = '#fff1f3'
+
+[cursor]
+#style = {Block, On}
+unfocused_hollow = true
