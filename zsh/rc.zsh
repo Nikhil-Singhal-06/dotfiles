@@ -1,10 +1,9 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# Instant prompt for Powerlevel10k
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Utility functions
 source_if_exists () {
     if test -r "$1"; then
         source "$1"
@@ -19,12 +18,15 @@ export_if_exists() {
     fi
 }
 
-source_if_exists $HOME/.env.sh
+# Load optional environment
+source_if_exists "$HOME/.env.sh"
 
-#Oh-My-ZSH
+# Define dotfiles path if missing
+export DOTFILES="${DOTFILES:-$HOME/dotfiles}"
+
+# Oh My Zsh
 export_if_exists "$HOME/.oh-my-zsh" ZSH
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
 
 plugins=(
   git
@@ -34,17 +36,24 @@ plugins=(
   history
   sudo
   tmux
-  )
+)
 
-source_if_exists $ZSH/oh-my-zsh.sh
+source_if_exists "$ZSH/oh-my-zsh.sh"
 
+# Powerlevel10k config
+source_if_exists "$DOTFILES/zsh/p10k.zsh"
 
-# p10k
-source_if_exists $DOTFILES/zsh/p10k.zsh
-
-#Aliases
+# Load aliases dynamically before each prompt
 precmd() {
-    source $DOTFILES/zsh/aliases.zsh
+    source "$DOTFILES/zsh/aliases.zsh"
 }
 
+# Path and locale
+export PATH="$HOME/.cargo/bin:$PATH"
+export LANG=en_US.UTF-8
 
+# Pyenv setup (uncomment if needed)
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
